@@ -29,7 +29,7 @@ func main() {
 			MaxNumberOfMessages: 10,
 			VisibilityTimeout:   20,
 			WaitTimeSeconds:     0,
-			PollInterval:        15,
+			PollInterval:        c.PollInterval,
 			BackingURL:          c.BackingURL,
 		},
 	}

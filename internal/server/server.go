@@ -12,7 +12,7 @@ import (
 // Start :
 func Start(c *config.Config) {
 	port := 8000
-	listenOn := fmt.Sprintf("0.0.0.0:%i", port)
+	listenOn := fmt.Sprintf("0.0.0.0:%d", port)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// Will abstract behind generic Handler Func later to support multiple queue types
 		sqs.HandleHook(w, r, c.SqsQueues)

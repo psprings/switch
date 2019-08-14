@@ -110,7 +110,7 @@ func (pc *PollConfig) DeleteMessage(message *sqs.Message) {
 
 // Receive :
 func Receive(queues []PollConfig) {
-	ReceiveFunc(queues, HandeMessage)
+	ReceiveFunc(queues, HandleMessage)
 }
 
 // Receive :

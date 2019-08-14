@@ -110,6 +110,11 @@ func (pc *PollConfig) DeleteMessage(message *sqs.Message) {
 
 // Receive :
 func Receive(queues []PollConfig) {
+	ReceiveFunc(queues, HandeMessage)
+}
+
+// Receive :
+func ReceiveFunc(queues []PollConfig, handleMessage func(*sqs.Message)) {
 	maxMessages := 10
 	chnMessages := make(chan *sqs.Message, maxMessages)
 
@@ -119,7 +124,7 @@ func Receive(queues []PollConfig) {
 		log.Printf("Listening on stack queue: %s", queue.QueueURL)
 
 		for message := range chnMessages {
-			HandleMessage(message)
+			handleMessage(message)
 			queue.DeleteMessage(message)
 		}
 	}
